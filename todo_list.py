@@ -4,28 +4,28 @@ import json
 class TodoList:
     def __init__(self,filepath):
         self.filepath = filepath
-        self.todo = self.load_todo()
+        self.tasks = self.load_tasks()
         
-    def load_todo(self):
+    def load_tasks(self):
         if not os.path.exists(self.filepath):
-            self.save_todo()
+            self.save_tasks()
             return {}
         with open(self.filepath,'r') as f:
             return json.load(f)
     
-    def save_todo(self):
+    def save_tasks(self):
         with open(self.filepath,'w') as f:
-            json.dump(self.todo,f,indent=4)
+            json.dump(self.tasks,f,indent=4)
     
-    def add_todo(self,task):
+    def add_task(self,task):
         new_task = {"task": task,"done":False}
-        self.todo.append(new_task)
-        self.save_todo()
+        self.tasks.append(new_task)
+        self.save_tasks()
         print(f"Task added: {task}")
     
-    def list_all_todo(self):
-        if not self.todo:
+    def list_all_tasks(self):
+        if not self.tasks:
             return "Nothing in your To Do list!"
-        for i,task in enumerate(self.todo,1):
+        for i,task in enumerate(self.tasks,1):
             print(f"{i}. {task['task']}")
        
