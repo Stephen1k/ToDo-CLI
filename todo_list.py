@@ -12,4 +12,8 @@ class TodoList:
             return {}
         with open(self.filepath,'r') as f:
             return json.load(f)
-        
+    
+    def save_todo(self):
+        with open(self.filepath,'w') as f:
+            json.dump(self.todo,f,indent=4)
+    
