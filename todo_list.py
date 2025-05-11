@@ -17,11 +17,15 @@ class TodoList:
         with open(self.filepath,'w') as f:
             json.dump(self.todo,f,indent=4)
     
-    def add_todo(self,item):
-        self.todo['item'] = item
+    def add_todo(self,task):
+        new_task = {"task": task,"done":False}
+        self.todo.append(new_task)
         self.save_todo()
+        print(f"Task added: {task}")
     
     def list_all_todo(self):
         if not self.todo:
             return "Nothing in your To Do list!"
-        return "\n".join([f"Item: {item}" for item in self.todo.items()])
+        for i,task in enumerate(self.todo,1):
+            print(f"{i}. {task['task']}")
+       
