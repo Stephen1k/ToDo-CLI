@@ -20,3 +20,8 @@ class TodoList:
     def add_todo(self,item):
         self.todo['item'] = item
         self.save_todo()
+    
+    def list_all_todo(self):
+        if not self.todo:
+            return "Nothing in your To Do list!"
+        return "\n".join([f"Item: {item}" for item in self.todo.items()])
