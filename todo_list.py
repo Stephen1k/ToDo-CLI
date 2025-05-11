@@ -17,3 +17,6 @@ class TodoList:
         with open(self.filepath,'w') as f:
             json.dump(self.todo,f,indent=4)
     
+    def add_todo(self,item):
+        self.todo['item'] = item
+        self.save_todo()
