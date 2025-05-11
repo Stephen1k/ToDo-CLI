@@ -28,4 +28,11 @@ class TodoList:
             return "Nothing in your To Do list!"
         for i,task in enumerate(self.tasks,1):
             print(f"{i}. {task['task']}")
-       
+    
+    def mark_done(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index]["done"] = True
+            self.save_tasks()
+            print(f"Task marked as done: {self.tasks[index]['task']}")
+        else:
+            print("Invalid task number.")   
