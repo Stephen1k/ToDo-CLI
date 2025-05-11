@@ -36,3 +36,11 @@ class TodoList:
             print(f"Task marked as done: {self.tasks[index]['task']}")
         else:
             print("Invalid task number.")   
+        
+    def delete_task(self,index):
+        if 0 <= index < len(self.tasks):
+            removed = self.tasks.pop(index)
+            self.save_tasks()
+            print(f"Deleted task: {removed['task']}")
+        else:
+            print("Invalid task number.")
